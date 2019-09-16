@@ -8,6 +8,10 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
+        Game game = new Game();
+        game.start();
+
+
         // this is a one-line comment
 
 //        AutoVehicle autoVehicle = new AutoVehicle();
@@ -80,17 +84,17 @@ public class App {
 //        System.out.println("Total count in Car class: " + Car.totalCount);
 
 
-        Vehicle hybridCar = new HybridCar();
-        hybridCar.setName("cheater");
-
-        // method implementation from object's class not from variable's class
-        hybridCar.accelerate(60, 1);
-
-        System.out.println("Fuel level: " + hybridCar.getFuelLevel());
-        System.out.println("Traveled distance: " + hybridCar.getTraveledDistance());
-
-        // variable type decides what methods can be invoked
-        // type casting
-        ((HybridCar) hybridCar).fly();
+//        Vehicle hybridCar = new HybridCar();
+//        hybridCar.setName("cheater");
+//
+//        // method implementation from object's class not from variable's class
+//        hybridCar.accelerate(60, 1);
+//
+//        System.out.println("Fuel level: " + hybridCar.getFuelLevel());
+//        System.out.println("Traveled distance: " + hybridCar.getTraveledDistance());
+//
+//        // variable type decides what methods can be invoked
+//        // type casting
+//        ((HybridCar) hybridCar).fly();
     }
 }
