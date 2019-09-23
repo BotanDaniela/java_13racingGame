@@ -11,24 +11,44 @@ public class Game {
     private Vehicle competitor1;
     private Vehicle competitor2;
     private Track[] tracks = new Track[3];
-    private List<Vehicle> competitors = new ArrayList<> ();
+    private List<Vehicle> competitors = new ArrayList<>();
 
 
     public void start() throws Exception {
         initializeTracks();
         displayTracks();
+
+        Track selectedTracks = getSelectedTrackFromUser();
+
         initializeCompetitors();
+
+
+
+    }
+
+    private Track getSelectedTrackFromUser() {
+        System.out.println("Please select a track.");
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            int userChoice = scanner.nextInt();
+            return tracks[userChoice - 1];
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("You have entered an invalid number.");
+            //recursion - a method calling itself
+            return getSelectedTrackFromUser();
+        }
 
     }
 
     private void initializeCompetitors() throws Exception {
         int competitorCount = getCompetitorCountFromUser();
         System.out.println("Today's competitors are: ");
-        for(int i=0; i<competitorCount; i++){
+        for (int i = 0; i < competitorCount; i++) {
             Vehicle competitor = new Vehicle();
             competitor.setName("Competitor " + i);
             competitor.setMaxSpeed(300);
-            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6,12));
+            competitor.setMileage(ThreadLocalRandom.current().nextDouble(6, 12));
             competitor.setFuelLevel(80);
 
             System.out.println(competitor);
@@ -42,7 +62,7 @@ public class Game {
         Scanner scanner = new Scanner(System.in);
         try {
             return scanner.nextInt();
-        } catch (InputMismatchException e){
+        } catch (InputMismatchException e) {
             throw new Exception(" You have entered an invalid number.");
         } finally {
             System.out.println("Finally block is always executed.");
